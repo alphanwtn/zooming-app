@@ -1,12 +1,15 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "./zoom-area.module.css";
 
-function ZoomArea({ children }) {
-  const [position, setPosition] = useState(null);
+function ZoomArea({ imageSrc }) {
+  const [cursorPositionAbsolute, setCursorPositionAbsolute] = useState(null);
+  const cursorPositionRelativeToImage = useRef(null);
+  const imageRef = useRef(null);
 
   const updateCursorPosition = (e) => {
-    setPosition({ x: e.clientX, y: e.clientY });
+    setCursorPositionAbsolute({ x: e.clientX, y: e.clientY });
   };
 
   useEffect(() => {
@@ -17,13 +20,42 @@ function ZoomArea({ children }) {
     };
   }, []);
 
+  useEffect(() => {
+    // RECALCULER APRES RESIZE
+    if (imageRef.current && cursorPositionAbsolute) {
+      const rect = imageRef.current.getBoundingClientRect();
+
+      const relativeImageX =
+        (cursorPositionAbsolute.x - rect.left) / rect.width;
+      const relativeImageY =
+        (cursorPositionAbsolute.y - rect.top) / rect.height;
+
+      cursorPositionRelativeToImage.current = {
+        x: relativeImageX * 100 + "%",
+        y: relativeImageY * 100 + "%",
+      };
+    }
+  }, [cursorPositionAbsolute]);
+
   return (
     <div className={styles.zoom_area}>
-      {children}
-      {position && (
+      <Image
+        ref={imageRef}
+        src={imageSrc}
+        alt="alt text to be defined"
+        width={500}
+        height={500}
+      />
+      {cursorPositionAbsolute && cursorPositionRelativeToImage.current && (
         <div
           className={styles.cursor}
-          style={{ left: position.x, top: position.y }}
+          style={{
+            left: cursorPositionAbsolute.x,
+            top: cursorPositionAbsolute.y,
+            backgroundImage: `url(${imageSrc})`,
+            backgroundPositionX: cursorPositionRelativeToImage.current.x,
+            backgroundPositionY: cursorPositionRelativeToImage.current.y,
+          }}
         />
       )}
     </div>
