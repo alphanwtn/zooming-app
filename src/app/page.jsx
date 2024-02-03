@@ -23,7 +23,7 @@ export default async function HomePage() {
           return (
             <li key={index}>
               <Link href={basename}>
-                <Image className={styles.image} src={imageSrc} width={160} height={160} alt={imageAlt} priority />
+                <Image className={styles.image} src={imageSrc} width={200} height={200} alt={imageAlt} priority />
               </Link>
             </li>
           );
