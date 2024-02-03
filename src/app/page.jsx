@@ -1,31 +1,33 @@
-import styles from "./page.module.css";
-import { assetsFileNamesExtractor } from "@/utils/assets-filenames-extractor";
-import { fileNameToBaseName } from "@/utils/filename-to-basename";
+import { ALT_TEXT_PREFIX, IMAGE_FOLDER } from "@/config/app-config";
+import {
+  basenameToFormattedName,
+  extractFilenamesFromFolder,
+  filenameToBasename,
+} from "@/utils/assets-filenames-utils";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import Image from "next/image";
+import styles from "./page.module.css";
 
 export default async function HomePage() {
-  const imageFileNames = await assetsFileNamesExtractor();
+  const imageFilenames = await extractFilenamesFromFolder(IMAGE_FOLDER);
 
   return (
     <main className={styles.home_page}>
       <h2 className={styles.instruction}>Click on the image to zoom in:</h2>
       <ul className={styles.image_hub}>
-        {imageFileNames.map((filename, index) => (
-          <li key={index}>
-            <Link href={fileNameToBaseName(filename)}>
-              <Image
-                className={styles.image}
-                src={"/assets/" + filename}
-                width={160}
-                height={160}
-                alt="alt text to be defined"
-                priority
-              />
-            </Link>
-          </li>
-        ))}
+        {imageFilenames.map((filename, index) => {
+          const basename = filenameToBasename(filename);
+          const imageSrc = IMAGE_FOLDER + filename;
+          const imageAlt = ALT_TEXT_PREFIX + basenameToFormattedName(basename).toLowerCase();
+          return (
+            <li key={index}>
+              <Link href={basename}>
+                <Image className={styles.image} src={imageSrc} width={160} height={160} alt={imageAlt} priority />
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </main>
   );

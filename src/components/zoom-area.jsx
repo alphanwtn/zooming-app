@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useEffect, useState, useRef } from "react";
 import styles from "./zoom-area.module.css";
 
-export default function ZoomArea({ imageSrc }) {
+export default function ZoomArea({ imageSrc, imageAlt }) {
   const [cursorPositionAbsolute, setCursorPositionAbsolute] = useState(null);
 
   const cursorPositionRelativeToImage = useRef(null);
@@ -37,16 +37,7 @@ export default function ZoomArea({ imageSrc }) {
 
   return (
     <div className={styles.zoom_area}>
-      <Image
-        className={styles.image}
-        ref={imageRef}
-        src={imageSrc}
-        alt="alt text to be defined"
-        layout="responsive"
-        width={400}
-        height={400}
-        priority
-      />
+      <Image ref={imageRef} src={imageSrc} alt={imageAlt} layout="responsive" width={400} height={400} priority />
       {cursorPositionAbsolute && cursorPositionRelativeToImage.current && (
         <div
           className={styles.cursor}

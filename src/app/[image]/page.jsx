@@ -1,27 +1,34 @@
 import ZoomArea from "@/components/zoom-area";
-import { assetsFileNamesExtractor } from "@/utils/assets-filenames-extractor";
-import { fileNameToBaseName } from "@/utils/filename-to-basename";
+import { ALT_TEXT_PREFIX, IMAGE_EXTENSION, IMAGE_FOLDER } from "@/config/app-config";
+import {
+  basenameToFormattedName,
+  extractFilenamesFromFolder,
+  filenameToBasename,
+} from "@/utils/assets-filenames-utils";
 import Link from "next/link";
 import React from "react";
 import styles from "./page.module.css";
 
 export default function ImagePage({ params }) {
-  const imageFileName = params.image;
+  const imageBasename = params.image;
+  const imageName = basenameToFormattedName(imageBasename);
+  const imageSrc = IMAGE_FOLDER + imageBasename + IMAGE_EXTENSION;
+  const imageAlt = ALT_TEXT_PREFIX + imageName.toLowerCase();
 
   return (
     <main className={styles.image_page}>
-      <h2>{imageFileName}</h2>
-      <ZoomArea imageSrc={`/assets/${imageFileName}.png`} />
+      <h2>{imageName}</h2>
+      <ZoomArea imageSrc={imageSrc} imageAlt={imageAlt} />
       <Link href="/">Back to home ↩</Link>
     </main>
   );
 }
 
 export async function generateStaticParams() {
-  const imageFileNames = await assetsFileNamesExtractor();
-  const imageBaseNames = imageFileNames.map((filename) => fileNameToBaseName(filename));
+  const imageFilenames = await extractFilenamesFromFolder(IMAGE_FOLDER);
+  const imageBasenames = imageFilenames.map((filename) => filenameToBasename(filename));
 
-  return imageBaseNames.map((baseName) => ({
-    image: baseName,
+  return imageBasenames.map((basename) => ({
+    image: basename,
   }));
 }
