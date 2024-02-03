@@ -3,8 +3,9 @@ import Image from "next/image";
 import React, { useEffect, useState, useRef } from "react";
 import styles from "./zoom-area.module.css";
 
-function ZoomArea({ imageSrc }) {
+export default function ZoomArea({ imageSrc }) {
   const [cursorPositionAbsolute, setCursorPositionAbsolute] = useState(null);
+
   const cursorPositionRelativeToImage = useRef(null);
   const imageRef = useRef(null);
 
@@ -21,7 +22,6 @@ function ZoomArea({ imageSrc }) {
   }, []);
 
   useEffect(() => {
-    // RECALCULER APRES RESIZE
     if (imageRef.current && cursorPositionAbsolute) {
       const rect = imageRef.current.getBoundingClientRect();
 
@@ -62,5 +62,3 @@ function ZoomArea({ imageSrc }) {
     </div>
   );
 }
-
-export default ZoomArea;
