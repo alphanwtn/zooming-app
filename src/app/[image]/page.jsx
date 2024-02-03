@@ -5,9 +5,11 @@ import {
   extractFilenamesFromFolder,
   filenameToBasename,
 } from "@/utils/assets-filenames-utils";
+import { generateImageMetadata } from "@/utils/generate-image-metadata";
 import Link from "next/link";
 import React from "react";
 import styles from "./page.module.css";
+import { GALLERY_AUTHOR } from "@/config/metadata";
 
 export default function ImagePage({ params }) {
   const imageBasename = params.image;
@@ -15,8 +17,11 @@ export default function ImagePage({ params }) {
   const imageSrc = IMAGE_FOLDER + imageBasename + IMAGE_EXTENSION;
   const imageAlt = ALT_TEXT_PREFIX + imageName.toLowerCase();
 
+  const jsonLd = generateImageMetadata(imageBasename, GALLERY_AUTHOR);
+
   return (
     <main className={styles.image_page}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <h2>{imageName}</h2>
       <ZoomArea imageSrc={imageSrc} imageAlt={imageAlt} />
       <Link href="/">Back to home ↩</Link>
