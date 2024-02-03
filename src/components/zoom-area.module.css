@@ -7,10 +7,6 @@
   cursor: none;
 }
 
-.image {
-  pointer-events: none;
-}
-
 .cursor {
   position: absolute;
   display: none;

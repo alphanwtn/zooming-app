@@ -67,7 +67,7 @@ body {
 body {
   height: 100%;
   color: rgb(var(--foreground-rgb));
-  background: var(--primary-glow);
+  background: linear-gradient(109.6deg, rgb(50, 60, 75) 11.2%, rgb(30, 47, 65) 51.2%, rgb(20, 20, 20) 98.6%);
 }
 
 a {
