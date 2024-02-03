@@ -1,9 +1,14 @@
 .zoom_area {
   padding: 24px;
+  max-width: 500px;
 }
 
 .zoom_area:hover {
   cursor: none;
+}
+
+.image {
+  pointer-events: none;
 }
 
 .cursor {

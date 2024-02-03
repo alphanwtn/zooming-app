@@ -10,18 +10,16 @@ export default function ImagePage({ params }) {
 
   return (
     <main className={styles.image_page}>
-      <h2>Page : {imageFileName}</h2>
+      <h2>{imageFileName}</h2>
       <ZoomArea imageSrc={`/assets/${imageFileName}.png`} />
-      <Link href="/">↩️ Back to home</Link>
+      <Link href="/">Back to home ↩</Link>
     </main>
   );
 }
 
 export async function generateStaticParams() {
   const imageFileNames = await assetsFileNamesExtractor();
-  const imageBaseNames = imageFileNames.map((filename) =>
-    fileNameToBaseName(filename)
-  );
+  const imageBaseNames = imageFileNames.map((filename) => fileNameToBaseName(filename));
 
   return imageBaseNames.map((baseName) => ({
     image: baseName,

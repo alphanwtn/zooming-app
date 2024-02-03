@@ -25,10 +25,8 @@ function ZoomArea({ imageSrc }) {
     if (imageRef.current && cursorPositionAbsolute) {
       const rect = imageRef.current.getBoundingClientRect();
 
-      const relativeImageX =
-        (cursorPositionAbsolute.x - rect.left) / rect.width;
-      const relativeImageY =
-        (cursorPositionAbsolute.y - rect.top) / rect.height;
+      const relativeImageX = (cursorPositionAbsolute.x - rect.left) / rect.width;
+      const relativeImageY = (cursorPositionAbsolute.y - rect.top) / rect.height;
 
       cursorPositionRelativeToImage.current = {
         x: relativeImageX * 100 + "%",
@@ -40,11 +38,14 @@ function ZoomArea({ imageSrc }) {
   return (
     <div className={styles.zoom_area}>
       <Image
+        className={styles.image}
         ref={imageRef}
         src={imageSrc}
         alt="alt text to be defined"
-        width={500}
-        height={500}
+        layout="responsive"
+        width={400}
+        height={400}
+        priority
       />
       {cursorPositionAbsolute && cursorPositionRelativeToImage.current && (
         <div
