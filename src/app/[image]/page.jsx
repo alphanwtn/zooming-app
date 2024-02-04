@@ -1,6 +1,6 @@
 import ZoomArea from '@/components/zoom-area';
 import { ALT_TEXT_PREFIX, IMAGE_EXTENSION, IMAGE_FOLDER } from '@/config/app-config';
-import { GALLERY_AUTHOR } from '@/config/metadata';
+import { IMAGES_AUTHOR } from '@/config/author-data';
 import {
   basenameToFormattedName,
   extractFilenamesFromFolder,
@@ -17,7 +17,7 @@ export default function ImagePage({ params }) {
   const imageSrc = IMAGE_FOLDER + imageBasename + IMAGE_EXTENSION;
   const imageAlt = ALT_TEXT_PREFIX + imageName.toLowerCase();
 
-  const jsonLd = generateImageMetadata(imageBasename, GALLERY_AUTHOR);
+  const jsonLd = generateImageMetadata(imageBasename, IMAGES_AUTHOR);
 
   return (
     <main className={styles.image_page}>

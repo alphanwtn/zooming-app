@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ALT_TEXT_PREFIX, IMAGE_FOLDER } from '@/config/app-config';
-import { GALLERY_AUTHOR } from '@/config/metadata';
+import { IMAGES_AUTHOR } from '@/config/author-data';
 import {
   basenameToFormattedName,
   extractFilenamesFromFolder,
@@ -18,7 +18,7 @@ export default async function HomePage() {
   const imagesMetadata = imageFilenames.map((filename) => {
     const basename = filenameToBasename(filename);
 
-    return generateImageMetadata(basename, GALLERY_AUTHOR);
+    return generateImageMetadata(basename, IMAGES_AUTHOR);
   });
 
   const jsonLd = {
