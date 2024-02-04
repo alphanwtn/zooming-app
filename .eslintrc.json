@@ -3,7 +3,8 @@
   "rules": {
     "react/prop-types": "off",
     "react/no-danger": "off",
-    "comma-dangle": "off"
+    "comma-dangle": "off",
+    "jsx-quotes": ["error", "prefer-single"]
   },
   "settings": {
     "import/resolver": {

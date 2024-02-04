@@ -17,7 +17,6 @@ export default async function HomePage() {
 
   const imagesMetadata = imageFilenames.map((filename) => {
     const basename = filenameToBasename(filename);
-
     return generateImageMetadata(basename, IMAGES_AUTHOR);
   });
 
@@ -30,7 +29,7 @@ export default async function HomePage() {
   return (
     <main className={styles.home_page}>
       <script
-        type="application/ld+json"
+        type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <h2>Hi there! 👋</h2>

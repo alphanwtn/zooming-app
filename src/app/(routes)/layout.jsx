@@ -1,8 +1,8 @@
 import React from 'react';
 import { Inter } from 'next/font/google';
-import './globals.css';
-import Header from '@/components/header';
-import Footer from '@/components/footer';
+import '../globals.css';
+import Header from '@/components/header/header';
+import Footer from '@/components/footer/footer';
 import { IMAGES_AUTHOR } from '@/config/author-data';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang='en'>
       <body className={inter.className}>
         <Header />
         {children}

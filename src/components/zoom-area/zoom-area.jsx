@@ -60,7 +60,15 @@ export default function ZoomArea({ imageSrc, imageAlt }) {
 
   return (
     <div className={styles.zoom_area}>
-      <Image ref={imageRef} src={imageSrc} alt={imageAlt} layout="responsive" width={400} height={400} priority />
+      <Image
+        ref={imageRef}
+        src={imageSrc}
+        alt={imageAlt}
+        layout='responsive'
+        width={400}
+        height={400}
+        priority
+      />
       {cursorPositionAbsolute && cursorPositionRelativeToImage.current && (
         <div
           className={styles.cursor}

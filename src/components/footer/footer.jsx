@@ -8,7 +8,7 @@ export default function Footer() {
     <>
       <div className={styles.fake_footer} />
       <footer className={styles.footer}>
-        <Link href={AUTHOR_WEBSITE} target="_blank">
+        <Link href={AUTHOR_WEBSITE} target='_blank'>
           Visit the artist page! ↗️
         </Link>
       </footer>

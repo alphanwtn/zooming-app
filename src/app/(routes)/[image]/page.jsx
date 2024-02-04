@@ -1,4 +1,4 @@
-import ZoomArea from '@/components/zoom-area';
+import ZoomArea from '@/components/zoom-area/zoom-area';
 import { ALT_TEXT_PREFIX, IMAGE_EXTENSION, IMAGE_FOLDER } from '@/config/app-config';
 import { IMAGES_AUTHOR } from '@/config/author-data';
 import {
@@ -22,12 +22,12 @@ export default function ImagePage({ params }) {
   return (
     <main className={styles.image_page}>
       <script
-        type="application/ld+json"
+        type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <h2>{imageName}</h2>
       <ZoomArea imageSrc={imageSrc} imageAlt={imageAlt} />
-      <Link href="/">Back to home ↩</Link>
+      <Link href='/'>Back to home ↩</Link>
     </main>
   );
 }
