@@ -10,14 +10,31 @@ export default function ZoomArea({ imageSrc, imageAlt }) {
   const imageRef = useRef(null);
 
   const updateCursorPosition = (e) => {
-    setCursorPositionAbsolute({ x: e.clientX, y: e.clientY });
+    // desktop "mousemove"
+    if (e.clientX && e.clientY) {
+      setCursorPositionAbsolute({ x: e.clientX, y: e.clientY });
+    }
+
+    // mobile "touchstart" "touchmove"
+    if (e.touches) {
+      const touches = e.touches;
+
+      const posX = touches[0].clientX;
+      const posY = touches[0].clientY;
+
+      setCursorPositionAbsolute({ x: posX, y: posY });
+    }
   };
 
   useEffect(() => {
     document.addEventListener("mousemove", updateCursorPosition);
+    document.addEventListener("touchstart", updateCursorPosition);
+    document.addEventListener("touchmove", updateCursorPosition);
 
     return () => {
       document.removeEventListener("mousemove", updateCursorPosition);
+      document.removeEventListener("touchstart", updateCursorPosition);
+      document.removeEventListener("touchmove", updateCursorPosition);
     };
   }, []);
 
