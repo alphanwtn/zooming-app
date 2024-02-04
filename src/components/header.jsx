@@ -12,7 +12,7 @@ export default function Header() {
       <span>
         <i>
           Pictures of
-          {GALLERY_AUTHOR}
+          {` ${GALLERY_AUTHOR}`}
         </i>
       </span>
     </header>
