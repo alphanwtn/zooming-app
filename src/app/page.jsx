@@ -30,10 +30,7 @@ export default async function HomePage() {
     <main className={styles.home_page}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <h2>Hi there! 👋</h2>
-      <p>
-        Discover stunning visuals with our virtual magnifying glass! Easily select and zoom in on details for a closer
-        look. Perfect for art and photography enthusiasts. Start exploring today!
-      </p>
+      <p>Click on the image you want to zoom in on:</p>
       <ul className={styles.image_hub}>
         {imageFilenames.map((filename, index) => {
           const basename = filenameToBasename(filename);

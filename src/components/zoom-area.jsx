@@ -15,8 +15,9 @@ export default function ZoomArea({ imageSrc, imageAlt }) {
       setCursorPositionAbsolute({ x: e.clientX, y: e.clientY });
     }
 
-    // mobile "touchstart" "touchmove"
+    // mobile "touchmove"
     if (e.touches) {
+      e.preventDefault();
       const touches = e.touches;
 
       const posX = touches[0].clientX;
@@ -28,12 +29,10 @@ export default function ZoomArea({ imageSrc, imageAlt }) {
 
   useEffect(() => {
     document.addEventListener("mousemove", updateCursorPosition);
-    document.addEventListener("touchstart", updateCursorPosition);
-    document.addEventListener("touchmove", updateCursorPosition);
+    document.addEventListener("touchmove", updateCursorPosition, { passive: false });
 
     return () => {
       document.removeEventListener("mousemove", updateCursorPosition);
-      document.removeEventListener("touchstart", updateCursorPosition);
       document.removeEventListener("touchmove", updateCursorPosition);
     };
   }, []);
