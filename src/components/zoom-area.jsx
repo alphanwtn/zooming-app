@@ -1,7 +1,8 @@
-"use client";
-import Image from "next/image";
-import React, { useEffect, useState, useRef } from "react";
-import styles from "./zoom-area.module.css";
+'use client';
+
+import Image from 'next/image';
+import React, { useEffect, useState, useRef } from 'react';
+import styles from './zoom-area.module.css';
 
 export default function ZoomArea({ imageSrc, imageAlt }) {
   const [cursorPositionAbsolute, setCursorPositionAbsolute] = useState(null);
@@ -10,15 +11,19 @@ export default function ZoomArea({ imageSrc, imageAlt }) {
   const imageRef = useRef(null);
 
   const updateCursorPosition = (e) => {
+    // disable scroll
+    if (e.type === 'touchmove') {
+      e.preventDefault();
+    }
+
     // desktop "mousemove"
     if (e.clientX && e.clientY) {
       setCursorPositionAbsolute({ x: e.clientX, y: e.clientY });
     }
 
-    // mobile "touchmove"
+    // mobile "touchmove" "touchstart"
     if (e.touches) {
-      e.preventDefault();
-      const touches = e.touches;
+      const { touches } = e;
 
       const posX = touches[0].clientX;
       const posY = touches[0].clientY;
@@ -28,12 +33,14 @@ export default function ZoomArea({ imageSrc, imageAlt }) {
   };
 
   useEffect(() => {
-    document.addEventListener("mousemove", updateCursorPosition);
-    document.addEventListener("touchmove", updateCursorPosition, { passive: false });
+    document.addEventListener('mousemove', updateCursorPosition);
+    document.addEventListener('touchstart', updateCursorPosition);
+    document.addEventListener('touchmove', updateCursorPosition, { passive: false });
 
     return () => {
-      document.removeEventListener("mousemove", updateCursorPosition);
-      document.removeEventListener("touchmove", updateCursorPosition);
+      document.removeEventListener('mousemove', updateCursorPosition);
+      document.removeEventListener('touchmove', updateCursorPosition);
+      document.removeEventListener('touchstart', updateCursorPosition);
     };
   }, []);
 
@@ -45,8 +52,8 @@ export default function ZoomArea({ imageSrc, imageAlt }) {
       const relativeImageY = (cursorPositionAbsolute.y - rect.top) / rect.height;
 
       cursorPositionRelativeToImage.current = {
-        x: relativeImageX * 100 + "%",
-        y: relativeImageY * 100 + "%",
+        x: `${relativeImageX * 100}%`,
+        y: `${relativeImageY * 100}%`,
       };
     }
   }, [cursorPositionAbsolute]);

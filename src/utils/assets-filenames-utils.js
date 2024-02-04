@@ -1,8 +1,8 @@
-import { IMAGE_EXTENSION } from "@/config/app-config";
-import { promises as fs } from "fs";
-import path from "path";
+import { IMAGE_EXTENSION } from '@/config/app-config';
+import { promises as fs } from 'fs';
+import path from 'path';
 
-/* 
+/*
   Naming conventions:
     Filename : "1-my-file.png"
     Basename : "1-my-file"
@@ -13,11 +13,12 @@ import path from "path";
  * Extracts filenames from a folder relative to the "public" directory.
  * All files must have the expected extension defined in app config file.
  * @param {string} relativePathFromPublic - The relative path from the "public" directory.
- * @returns {Promise<string[]>} - A promise that resolves to an array of filenames with the specified extension in the folder.
+ * @returns {Promise<string[]>} - A promise that resolves to an array of filenames with
+ * the specified extension in the folder.
  * @throws {Error} - If there is an error reading the folder or if files have different extensions.
  */
 export async function extractFilenamesFromFolder(relativePathFromPublic) {
-  const absoluteFolderPath = path.join(process.cwd(), "public/" + relativePathFromPublic);
+  const absoluteFolderPath = path.join(process.cwd(), `public/${relativePathFromPublic}`);
 
   try {
     const filenames = await fs.readdir(absoluteFolderPath);
@@ -42,7 +43,7 @@ export async function extractFilenamesFromFolder(relativePathFromPublic) {
  * @returns {string} - The base name of the file (without the extension).
  */
 export function filenameToBasename(filename) {
-  return filename.split(".")[0];
+  return filename.split('.')[0];
 }
 
 /**
@@ -52,10 +53,10 @@ export function filenameToBasename(filename) {
  * @returns {string} - The formatted name.
  */
 export function basenameToFormattedName(basename) {
-  let words = basename.split("-");
+  const words = basename.split('-');
   words.shift();
 
-  let formattedName = words.join(" ");
+  let formattedName = words.join(' ');
   formattedName = formattedName.charAt(0).toUpperCase() + formattedName.slice(1);
 
   return formattedName;

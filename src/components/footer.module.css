@@ -2,10 +2,16 @@
   position: fixed;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   bottom: 0px;
-  padding: 1rem 1rem;
+  padding: 0rem 1rem;
   width: 100%;
-  text-align: center;
   box-shadow: 0px -4px 6px -1px rgba(0, 0, 0, 0.1), 0px -2px 4px -1px rgba(0, 0, 0, 0.06);
   backdrop-filter: blur(10px);
+}
+
+.footer,
+.fake_footer {
+  height: 3rem;
 }

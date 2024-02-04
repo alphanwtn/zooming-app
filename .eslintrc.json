@@ -1,3 +1,16 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "airbnb"],
+  "rules": {
+    "react/prop-types": "off",
+    "react/no-danger": "off",
+    "comma-dangle": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "extensions": [".js", ".jsx"],
+        "map": [["@", "./src"]]
+      }
+    }
+  }
 }

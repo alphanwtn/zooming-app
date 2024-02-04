@@ -1,7 +1,7 @@
-import Link from "next/link";
-import React from "react";
-import styles from "./header.module.css";
-import { GALLERY_AUTHOR } from "@/config/metadata";
+import Link from 'next/link';
+import React from 'react';
+import { GALLERY_AUTHOR } from '@/config/metadata';
+import styles from './header.module.css';
 
 export default function Header() {
   return (
@@ -10,7 +10,10 @@ export default function Header() {
         <h1>The Zooming App</h1>
       </Link>
       <span>
-        <i>Pictures from {GALLERY_AUTHOR}</i>
+        <i>
+          Pictures of
+          {GALLERY_AUTHOR}
+        </i>
       </span>
     </header>
   );

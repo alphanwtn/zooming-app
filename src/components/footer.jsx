@@ -1,14 +1,17 @@
-import React from "react";
-import styles from "./footer.module.css";
-import { AUTHOR_WEBSITE } from "@/config/metadata";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
+import { AUTHOR_WEBSITE } from '@/config/metadata';
+import styles from './footer.module.css';
 
 export default function Footer() {
   return (
-    <footer className={styles.footer}>
-      <Link href={AUTHOR_WEBSITE} target="_blank">
-        Visit the artist page! ↗️
-      </Link>
-    </footer>
+    <>
+      <div className={styles.fake_footer} />
+      <footer className={styles.footer}>
+        <Link href={AUTHOR_WEBSITE} target="_blank">
+          Visit the artist page! ↗️
+        </Link>
+      </footer>
+    </>
   );
 }

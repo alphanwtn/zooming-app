@@ -1,11 +1,11 @@
-import React from "react";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import { GALLERY_AUTHOR } from "@/config/metadata";
+import React from 'react';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
+import { GALLERY_AUTHOR } from '@/config/metadata';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: `The Zooming App - Explore ${GALLERY_AUTHOR}' Pictures In Detail !`,

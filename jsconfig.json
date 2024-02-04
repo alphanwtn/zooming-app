@@ -6,5 +6,5 @@
     },
     "checkJs": true
   },
-  "include": ["**/*.jsx"]
+  "include": ["**/*.jsx", "**/*.js"]
 }
