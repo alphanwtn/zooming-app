@@ -4,13 +4,13 @@ import Image from 'next/image';
 import React, { useEffect, useState, useRef } from 'react';
 import styles from './zoom-area.module.css';
 
+const ZOOM_AREA_PADDING = 24;
+
 export default function ZoomArea({ imageSrc, imageAlt }) {
   const [cursorPositionAbsolute, setCursorPositionAbsolute] = useState(null);
 
   const cursorPositionRelativeToImage = useRef(null);
   const imageRef = useRef(null);
-
-  const ZOOM_AREA_PADDING = 24;
 
   const updateCursorPosition = (e) => {
     // disable scroll and refresh
@@ -18,18 +18,17 @@ export default function ZoomArea({ imageSrc, imageAlt }) {
       e.preventDefault();
     }
 
-    // desktop "mousemove"
+    // desktop events
     if (e.clientX && e.clientY) {
-      setCursorPositionAbsolute({ x: e.clientX, y: e.clientY });
+      const { clientX, clientY } = e;
+      setCursorPositionAbsolute({ x: clientX, y: clientY });
     }
 
-    // mobile "touchmove" "touchstart"
+    // mobile events
     if (e.touches) {
       const { touches } = e;
-      const posX = touches[0].clientX;
-      const posY = touches[0].clientY;
-
-      setCursorPositionAbsolute({ x: posX, y: posY });
+      const { clientX, clientY } = touches[0];
+      setCursorPositionAbsolute({ x: clientX, y: clientY });
     }
   };
 
@@ -55,12 +54,12 @@ export default function ZoomArea({ imageSrc, imageAlt }) {
         cursorPositionAbsolute.y < rect.top - ZOOM_AREA_PADDING ||
         cursorPositionAbsolute.y > rect.bottom + ZOOM_AREA_PADDING;
 
-      const relativeImageX = (cursorPositionAbsolute.x - rect.left) / rect.width;
-      const relativeImageY = (cursorPositionAbsolute.y - rect.top) / rect.height;
-
       if (isOutsideZoomArea) {
         cursorPositionRelativeToImage.current = null;
       } else {
+        const relativeImageX = (cursorPositionAbsolute.x - rect.left) / rect.width;
+        const relativeImageY = (cursorPositionAbsolute.y - rect.top) / rect.height;
+
         cursorPositionRelativeToImage.current = {
           x: `${relativeImageX * 100}%`,
           y: `${relativeImageY * 100}%`,
