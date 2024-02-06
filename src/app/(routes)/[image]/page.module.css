@@ -2,6 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0rem 1rem;
+  padding: 0rem var(--side-padding);
   margin: 4vh 0vh;
 }

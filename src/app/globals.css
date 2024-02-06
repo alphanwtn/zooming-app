@@ -1,11 +1,14 @@
 :root {
   --max-width: 1100px;
-  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono",
-    "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono',
+    'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono',
+    'Courier New', monospace;
 
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 0, 0;
   --background-end-rgb: 0, 0, 0;
+
+  --side-padding: 2rem;
 }
 
 * {
@@ -27,7 +30,12 @@ body {
 body {
   height: 100%;
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(109.6deg, rgb(50, 60, 75) 11.2%, rgb(30, 47, 65) 51.2%, rgb(20, 20, 20) 98.6%);
+  background: linear-gradient(
+    109.6deg,
+    rgb(50, 60, 75) 11.2%,
+    rgb(30, 47, 65) 51.2%,
+    rgb(20, 20, 20) 98.6%
+  );
 }
 
 a {

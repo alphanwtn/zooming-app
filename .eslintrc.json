@@ -8,7 +8,8 @@
     "react/no-danger": "off",
     "comma-dangle": "off",
     "jsx-quotes": ["error", "prefer-single"],
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "operator-linebreak": "off"
   },
   "settings": {
     "import/resolver": {
