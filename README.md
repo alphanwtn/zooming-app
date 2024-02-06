@@ -26,7 +26,7 @@ All main security and best practices have been adhered to, resulting in a 96/100
 
 ### Performance
 
-The performance of the app has been tested using Lighthouse, resulting in a score of 76/100. This score could be improved if the assets were served via a CDN, but this is currently out of scope for this project.
+The app's performance has undergone testing with Lighthouse, yielding a score of 76/100. Enhancements could be made by serving assets through a CDN, although this falls beyond the current project scope. Nevertheless, assets have been compressed to .webp format to mitigate latency.
 
 ## Coding Practices
 
@@ -53,7 +53,7 @@ The app is deployed through a Vercel pipeline which tests and verifies linting b
 - **Minimalist Efficient UX/UI**
 - **Responsive Design**
 - **SEO Optimization**
-- **Performance Optimization**: As a static app, it avoids heavy JavaScript loadings.
+- **Performance Optimization**: As a static app, it avoids heavy JavaScript loadings. Web optimized images.
 - **Accessibility Guaranteed**
 - **CI/CD with Unit and Lint Tests**
 - **Monitoring and Logging**: Monitoring of the app through Vercel.
