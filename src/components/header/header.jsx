@@ -9,11 +9,9 @@ export default function Header() {
       <Link href='/'>
         <h1>The Zooming App</h1>
       </Link>
-      <span>
-        <i>
-          Pictures of
-          {` ${IMAGES_AUTHOR}`}
-        </i>
+      <span className={styles.subtitle}>
+        Pictures of
+        {` ${IMAGES_AUTHOR}`}
       </span>
     </header>
   );

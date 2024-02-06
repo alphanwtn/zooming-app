@@ -4,11 +4,12 @@ import { render, screen } from '@testing-library/react';
 import Header from './header';
 
 describe('Header', () => {
-  it('renders a heading', () => {
+  it('Contains a header html tag', () => {
     render(<Header />);
 
-    const heading = screen.getByRole('heading', { level: 1 });
+    const heading = screen.getByRole('banner');
 
     expect(heading).toBeInTheDocument();
+    expect(heading.nodeName).toBe('HEADER');
   });
 });

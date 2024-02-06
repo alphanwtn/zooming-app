@@ -9,17 +9,36 @@ const createJestConfig = nextJest({
 const config = {
   clearMocks: true,
   collectCoverage: true,
+  collectCoverageFrom: [
+    '**/*.{js,jsx}',
+    '!**/node_modules/**',
+    '!**/.next/**',
+    '!**/out/**',
+    '!**/coverage/**',
+    '!**/robots.js',
+    '!**/sitemap.js',
+    '!**/config/**',
+    '!**/jest.config.js',
+  ],
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
   testEnvironment: 'jsdom',
-  testMatch: ['**/*.js', '**/*.jsx'],
+  testMatch: ['**/*.test.js', '**/*.test.jsx'],
   testPathIgnorePatterns: [
     '<rootDir>/jest.config.js',
     '<rootDir>/coverage',
-    '<rootDir>/src/config/',
+    '<rootDir>/src/config',
     '<rootDir>/src/app/robots.js',
     '<rootDir>/src/app/sitemap.js',
   ],
+  coverageThreshold: {
+    global: {
+      statements: 70,
+      branches: 70,
+      functions: 70,
+      lines: 70,
+    },
+  },
 };
 
 export default createJestConfig(config);

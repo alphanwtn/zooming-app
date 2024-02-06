@@ -12,8 +12,8 @@ import {
 import generateImageMetadata from '@/utils/generate-image-metadata';
 import styles from './page.module.css';
 
-export default async function HomePage() {
-  const imageFilenames = await extractFilenamesFromFolder(IMAGE_FOLDER);
+export default function HomePage() {
+  const imageFilenames = extractFilenamesFromFolder(IMAGE_FOLDER);
 
   const imagesMetadata = imageFilenames.map((filename) => {
     const basename = filenameToBasename(filename);
