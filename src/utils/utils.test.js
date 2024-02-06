@@ -12,7 +12,7 @@ describe('generate-image-metadata', () => {
     expect(meta).toEqual({
       '@context': 'https://schema.org/',
       '@type': 'ImageObject',
-      contentUrl: 'https://rzc-tech-test.vercel.app/assets/3-mon-image.png',
+      contentUrl: 'https://rzc-tech-test.vercel.app/assets/3-mon-image.webp',
       creditText: 'Mon image',
       creator: { '@type': 'Person', name: 'Michel' },
     });
