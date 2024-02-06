@@ -1,11 +1,13 @@
 'use client';
 
-import Image from 'next/legacy/image';
 import React, { useEffect, useState, useRef } from 'react';
+import PropTypes from 'prop-types';
 import { ZOOM_SIDE_MARGIN } from '@/config/app-config';
+import classNames from 'classnames';
 import styles from './zoom-area.module.css';
+import ImageWrapper from '../image-wrapper/image-wrapper';
 
-export default function ZoomArea({ imageSrc, imageAlt }) {
+export default function ZoomArea({ className, imageSrc, imageAlt }) {
   const [cursorPositionAbsolute, setCursorPositionAbsolute] = useState(null);
 
   const cursorPositionRelativeToImage = useRef(null);
@@ -68,16 +70,13 @@ export default function ZoomArea({ imageSrc, imageAlt }) {
   }, [cursorPositionAbsolute]);
 
   return (
-    <div className={styles.zoom_area} ref={imageRef}>
-      <Image
+    <div className={classNames(className, styles.zoom_area)} ref={imageRef}>
+      <ImageWrapper
         className={styles.image}
-        src={imageSrc}
-        alt={imageAlt}
+        imageSrc={imageSrc}
+        imageAlt={imageAlt}
         onDragStart={(e) => e.preventDefault()}
-        layout='responsive'
-        width={1}
-        height={1}
-        priority
+        fill
       />
       {cursorPositionRelativeToImage.current && (
         <div
@@ -95,3 +94,9 @@ export default function ZoomArea({ imageSrc, imageAlt }) {
     </div>
   );
 }
+
+ZoomArea.propTypes = {
+  className: PropTypes.string,
+  imageSrc: PropTypes.string.isRequired,
+  imageAlt: PropTypes.string.isRequired,
+};

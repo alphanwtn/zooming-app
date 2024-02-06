@@ -1,6 +1,5 @@
 /* eslint-disable react/no-danger */
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ALT_TEXT_PREFIX, IMAGE_FOLDER } from '@/config/app-config';
 import { IMAGES_AUTHOR } from '@/config/author-data';
@@ -10,6 +9,7 @@ import {
   filenameToBasename,
 } from '@/utils/assets-filenames-utils';
 import generateImageMetadata from '@/utils/generate-image-metadata';
+import ImageWrapper from '@/components/image-wrapper/image-wrapper';
 import styles from './page.module.css';
 
 export default function HomePage() {
@@ -42,13 +42,12 @@ export default function HomePage() {
           return (
             <li key={filename}>
               <Link href={basename}>
-                <Image
+                <ImageWrapper
                   className={styles.image}
-                  src={imageSrc}
+                  imageSrc={imageSrc}
                   width={240}
                   height={240}
-                  alt={imageAlt}
-                  priority
+                  imageAlt={imageAlt}
                 />
               </Link>
             </li>
