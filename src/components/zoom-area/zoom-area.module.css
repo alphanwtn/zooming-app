@@ -3,13 +3,9 @@
   width: 100%;
 }
 
-.zoom_area:hover {
-  cursor: none;
-}
-
 .cursor {
   position: absolute;
-  pointer-events: none;
+  cursor: none;
   width: 100px;
   height: 100px;
   border-radius: 50%;
