@@ -1,5 +1,6 @@
 .zoom_area {
   max-width: 500px;
+  width: 100%;
 }
 
 .zoom_area:hover {

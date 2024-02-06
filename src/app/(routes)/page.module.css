@@ -27,6 +27,6 @@
 }
 
 .image:hover {
-  border: 1px solid whitesmoke;
+  border: 2px solid whitesmoke;
   opacity: unset;
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import React, { useEffect, useState, useRef } from 'react';
 import styles from './zoom-area.module.css';
 
@@ -71,12 +71,13 @@ export default function ZoomArea({ imageSrc, imageAlt }) {
   return (
     <div className={styles.zoom_area} ref={imageRef}>
       <Image
+        className={styles.image}
         src={imageSrc}
         alt={imageAlt}
         onDragStart={(e) => e.preventDefault()}
         layout='responsive'
-        width={400}
-        height={400}
+        width={1}
+        height={1}
         priority
       />
       {cursorPositionRelativeToImage.current && (

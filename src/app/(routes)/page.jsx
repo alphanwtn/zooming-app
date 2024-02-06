@@ -45,8 +45,8 @@ export default function HomePage() {
                 <Image
                   className={styles.image}
                   src={imageSrc}
-                  width={200}
-                  height={200}
+                  width={240}
+                  height={240}
                   alt={imageAlt}
                   priority
                 />
