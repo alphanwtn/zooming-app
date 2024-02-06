@@ -10,7 +10,7 @@ jest.mock('next/image', () => ({
 }));
 
 describe('ZoomArea', () => {
-  it('Contains a header html tag', () => {
+  it('Contains an image inside', () => {
     render(<ZoomArea imageSrc='/fake/adress' imageAlt='no image' />);
 
     const image = screen.getByRole('img');
