@@ -32,8 +32,8 @@ export default function ImagePage({ params }) {
   );
 }
 
-export async function generateStaticParams() {
-  const imageFilenames = await extractFilenamesFromFolder(IMAGE_FOLDER);
+export function generateStaticParams() {
+  const imageFilenames = extractFilenamesFromFolder(IMAGE_FOLDER);
   const imageBasenames = imageFilenames.map((filename) => filenameToBasename(filename));
 
   return imageBasenames.map((basename) => ({

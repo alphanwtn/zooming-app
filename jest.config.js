@@ -11,6 +11,7 @@ const config = {
   collectCoverage: true,
   collectCoverageFrom: [
     '**/*.{js,jsx}',
+    '!**/layout.jsx',
     '!**/node_modules/**',
     '!**/.next/**',
     '!**/out/**',
@@ -33,10 +34,10 @@ const config = {
   ],
   coverageThreshold: {
     global: {
-      statements: 65,
-      branches: 65,
-      functions: 65,
-      lines: 65,
+      statements: 70,
+      branches: 70,
+      functions: 70,
+      lines: 70,
     },
   },
 };

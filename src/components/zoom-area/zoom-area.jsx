@@ -4,7 +4,7 @@ import Image from 'next/image';
 import React, { useEffect, useState, useRef } from 'react';
 import styles from './zoom-area.module.css';
 
-const ZOOM_AREA_PADDING = 24;
+const ZOOM_SIDE_MARGIN = 24;
 
 export default function ZoomArea({ imageSrc, imageAlt }) {
   const [cursorPositionAbsolute, setCursorPositionAbsolute] = useState(null);
@@ -12,7 +12,7 @@ export default function ZoomArea({ imageSrc, imageAlt }) {
   const cursorPositionRelativeToImage = useRef(null);
   const imageRef = useRef(null);
 
-  const updateCursorPosition = (e) => {
+  const updateCursorAbsPosition = (e) => {
     // disable scroll and refresh
     if (e.type === 'touchmove') {
       e.preventDefault();
@@ -33,14 +33,14 @@ export default function ZoomArea({ imageSrc, imageAlt }) {
   };
 
   useEffect(() => {
-    document.addEventListener('mousemove', updateCursorPosition);
-    document.addEventListener('touchstart', updateCursorPosition);
-    document.addEventListener('touchmove', updateCursorPosition, { passive: false });
+    document.addEventListener('mousemove', updateCursorAbsPosition);
+    document.addEventListener('touchstart', updateCursorAbsPosition);
+    document.addEventListener('touchmove', updateCursorAbsPosition, { passive: false });
 
     return () => {
-      document.removeEventListener('mousemove', updateCursorPosition);
-      document.removeEventListener('touchmove', updateCursorPosition);
-      document.removeEventListener('touchstart', updateCursorPosition);
+      document.removeEventListener('mousemove', updateCursorAbsPosition);
+      document.removeEventListener('touchmove', updateCursorAbsPosition);
+      document.removeEventListener('touchstart', updateCursorAbsPosition);
     };
   }, []);
 
@@ -49,10 +49,10 @@ export default function ZoomArea({ imageSrc, imageAlt }) {
       const rect = imageRef.current.getBoundingClientRect();
 
       const isOutsideZoomArea =
-        cursorPositionAbsolute.x < rect.left - ZOOM_AREA_PADDING ||
-        cursorPositionAbsolute.x > rect.right + ZOOM_AREA_PADDING ||
-        cursorPositionAbsolute.y < rect.top - ZOOM_AREA_PADDING ||
-        cursorPositionAbsolute.y > rect.bottom + ZOOM_AREA_PADDING;
+        cursorPositionAbsolute.x < rect.left - ZOOM_SIDE_MARGIN ||
+        cursorPositionAbsolute.x > rect.right + ZOOM_SIDE_MARGIN ||
+        cursorPositionAbsolute.y < rect.top - ZOOM_SIDE_MARGIN ||
+        cursorPositionAbsolute.y > rect.bottom + ZOOM_SIDE_MARGIN;
 
       if (isOutsideZoomArea) {
         cursorPositionRelativeToImage.current = null;
@@ -69,9 +69,8 @@ export default function ZoomArea({ imageSrc, imageAlt }) {
   }, [cursorPositionAbsolute]);
 
   return (
-    <div className={styles.zoom_area} style={{ padding: ZOOM_AREA_PADDING }}>
+    <div className={styles.zoom_area} ref={imageRef}>
       <Image
-        ref={imageRef}
         src={imageSrc}
         alt={imageAlt}
         onDragStart={(e) => e.preventDefault()}
@@ -83,6 +82,7 @@ export default function ZoomArea({ imageSrc, imageAlt }) {
       {cursorPositionRelativeToImage.current && (
         <div
           className={styles.cursor}
+          data-testid='cursor-div'
           style={{
             left: cursorPositionAbsolute.x,
             top: cursorPositionAbsolute.y,

@@ -9,7 +9,8 @@
     "comma-dangle": "off",
     "jsx-quotes": ["error", "prefer-single"],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
-    "operator-linebreak": "off"
+    "operator-linebreak": "off",
+    "object-curly-newline": "off"
   },
   "settings": {
     "import/resolver": {
