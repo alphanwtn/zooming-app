@@ -26,7 +26,7 @@ All main security and best practices have been adhered to, resulting in a 96/100
 
 ### Performance
 
-The app's performance has undergone testing with Lighthouse, yielding a score of 76/100. Enhancements could be made by serving assets through a CDN, although this falls beyond the current project scope. Nevertheless, assets have been compressed to .webp format to mitigate latency.
+The app's performance has undergone testing with Lighthouse, yielding a score of 89/100. Enhancements could be made by serving assets through a CDN, although this falls beyond the current project scope. Nevertheless, assets have been compressed to .webp format to mitigate latency.
 
 ## Coding Practices
 
