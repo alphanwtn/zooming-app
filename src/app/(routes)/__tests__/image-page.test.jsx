@@ -17,7 +17,7 @@ describe('HomePage', () => {
   it('Contains an image', () => {
     render(<ImagePage params={{ image: '1-test-image' }} />);
 
-    const image = screen.getByRole('img');
+    const image = screen.getByAltText('fake');
 
     expect(image).toBeInTheDocument();
   });

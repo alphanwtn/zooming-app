@@ -2,9 +2,8 @@
 
 import Image from 'next/legacy/image';
 import React, { useEffect, useState, useRef } from 'react';
+import { ZOOM_SIDE_MARGIN } from '@/config/app-config';
 import styles from './zoom-area.module.css';
-
-const ZOOM_SIDE_MARGIN = 24;
 
 export default function ZoomArea({ imageSrc, imageAlt }) {
   const [cursorPositionAbsolute, setCursorPositionAbsolute] = useState(null);

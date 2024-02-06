@@ -2,7 +2,7 @@ import { IMAGE_FOLDER } from '@/config/app-config';
 import { extractFilenamesFromFolder, filenameToBasename } from '@/utils/assets-filenames-utils';
 
 export default async function sitemap() {
-  const imageFilenames = await extractFilenamesFromFolder(IMAGE_FOLDER);
+  const imageFilenames = extractFilenamesFromFolder(IMAGE_FOLDER);
   const imagePagesXml = imageFilenames.map((filename) => {
     const basename = filenameToBasename(filename);
 
