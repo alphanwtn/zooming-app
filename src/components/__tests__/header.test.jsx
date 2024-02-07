@@ -1,7 +1,7 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import Header from './header';
+import Header from '../header/header';
 
 describe('Header', () => {
   it('Contains a header html tag', () => {

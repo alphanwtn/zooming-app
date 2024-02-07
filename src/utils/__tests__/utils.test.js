@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
-import generateImageMetadata from './generate-image-metadata';
-import { basenameToFormattedName, filenameToBasename } from './assets-filenames-utils';
+import generateImageMetadata from '../generate-image-metadata';
+import { basenameToFormattedName, filenameToBasename } from '../assets-filenames-utils';
 
 describe('generate-image-metadata', () => {
   it('Creates correct image metadata', () => {

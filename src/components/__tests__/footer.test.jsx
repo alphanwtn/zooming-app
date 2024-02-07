@@ -1,7 +1,7 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import Footer from './footer';
+import Footer from '../footer/footer';
 
 describe('Header', () => {
   it('Contains a footer html tag', () => {

@@ -2,7 +2,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import ZoomArea from './zoom-area';
+import ZoomArea from '../zoom-area/zoom-area';
 
 jest.mock('next/image', () => ({
   __esModule: true,
